@@ -19,10 +19,6 @@ La aplicación ofrece una interfaz moderna y responsiva con las siguientes carac
 
 ---
 
-## 🖼️ Vista previa
-
-> *(Aquí puedes agregar capturas de pantalla o un GIF mostrando la navegación entre la grilla y el detalle)*  
-
 Ejemplo de flujo:  
 
 1. Vista inicial con grilla.  
