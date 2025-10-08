@@ -8,10 +8,10 @@ const Grid = ({Elementos}) => {
 
   return (
     <>
-        <div className=" pt-8">
-            {!detalle ? <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+        <div className="pt-4 sm:pt-6 lg:pt-8">
+            {!detalle ? <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4'>
             {(Elementos.map((item, index) => (
-                <div key={index} onClick={() => (setdetalle(true), setselectedItem(index))} className=' cursor-pointer hover:scale-105 duration-300'>
+                <div key={index} onClick={() => (setdetalle(true), setselectedItem(index))} className='cursor-pointer hover:scale-105 duration-300'>
                     <GridItem
                     titulo={item.titulo}
                     precio={item.precio}

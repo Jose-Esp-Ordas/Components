@@ -1,5 +1,15 @@
 @import "tailwindcss";
 @theme {  --color-rosita: #C84478;  --color-cafe: #290F1A;  --color-negro: #0E0E0E;}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 :root {
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;  line-height: 1.5;
   font-weight: 400;
@@ -12,4 +22,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #1e293b inset !important; /* azul oscuro slate-800 */
+    box-shadow: 0 0 0px 1000px #1e293b inset !important;
+    -webkit-text-fill-color: #ffffff !important; /* texto blanco */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 }

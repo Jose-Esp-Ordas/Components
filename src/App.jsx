@@ -4,29 +4,78 @@ import Fondo from './components/Fondo'
 import Ejemplo from './components/ejemplo'
 import Mostrador from './components/Mostrador'
 import Footer from './components/Footer'
+import { useState } from 'react'
+import Login from './components/Login/Login'
 
 function App() {
   const itemsList = ["Features","Pricing"]
   const elementos = [
-    { titulo: "Elemento 1", precio:"56", descripcion: "Descripción 1", src: "./placeholder.png" },
-    { titulo: "Elemento 2", precio:"56", descripcion: "Descripción 2", src: "./placeholder.png" },
-    { titulo: "Elemento 3", precio:"56", descripcion: "Descripción 3", src: "./placeholder.png" },
-    { titulo: "Elemento 4", precio:"56", descripcion: "Descripción 4", src: "./placeholder.png" },
-    { titulo: "Elemento 5", precio:"56", descripcion: "Descripción 5", src: "./placeholder.png" },
-    { titulo: "Elemento 6", precio:"56", descripcion: "Descripción 6", src: "./placeholder.png" },
-    ];
+  {
+    titulo: "Casco espacial 1",
+    precio: "90",
+    descripcion: "Casco espacial blanco estilizado.",
+    src: "https://fbi.cults3d.com/uploaders/34362730/illustration-file/0352c323-9879-4006-ab19-19812e998f82/render-2.png"
+  },
+  {
+    titulo: "Casco espacial 2",
+    precio: "95",
+    descripcion: "Casco futurista con diseño elegante.",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShD_yp03tFqng860_n9c7zfkVD9gFCJ6D2Ug&s"
+  },
+  {
+    titulo: "Nave cápsula",
+    precio: "500",
+    descripcion: "Nave tipo cápsula espacial minimalista.",
+    src: "https://zeelproject.com/uploads/posts/2024-10-14/1728927491_bookshelf-fancy-.png"
+  },
+  {
+    titulo: "Casco espacial 3",
+    precio: "100",
+    descripcion: "Casco negro con visor reflectante.",
+    src: "data:image/jpeg;base64,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"
+  },
+  {
+    titulo: "Casco con ventana",
+    precio: "110",
+    descripcion: "Casco con gran visor frontal.",
+    src: "https://xmp.mx/cdn/shop/files/1335B23131-2RN-24-FU404SVMTHelmetsATOM2SVEMALLAB3Matt_01.png?v=1733769477&width=1946"
+  },
+  {
+    titulo: "Casco blanco puro",
+    precio: "85",
+    descripcion: "Casco espacial simple y limpio.",
+    src: "https://formlabs.com/_next/image/?url=https%3A%2F%2Fformlabs-media.formlabs.com%2Ffiler_public_thumbnails%2Ffiler_public%2Fbf%2Fd5%2Fbfd54962-d127-4c72-87e1-ea93d9cc69d6%2Fmodel_hero5.png__1354x0_subsampling-2.png&w=3840&q=75"
+  },
+];
+  const [auth, setAuth] = useState(false)
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const handleLogin = (user) => {
+    setAuth(true)
+    setCurrentUser(user)
+    console.log("Usuario logeado: ", user)
+  }
+
+  const handleLogut = () => {
+    setAuth(false)
+    setCurrentUser(null)
+  }
   
 //Diseño de: https://dribbble.com/shots/26399922-agency-website-ui-design?utm_source=Clipboard_Shot&utm_campaign=Black-Bulls&utm_content=agency%20website%20ui%20design&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=Black-Bulls&utm_content=agency%20website%20ui%20design&utm_medium=Social_Share
   return (
     <>
-      <Fondo textofondo={"Increíble"}/>
-      <div className=' bg-cafe mx-10 mt-[16vw]'>
-        <Header title="AppShow" icon="./icon.svg" items={itemsList} link="#" />
-        <h1 className='titulo'>Design Your</h1>
-        <h1 className='titulo'>Own Journey</h1>
-        <Ejemplo texto=" Empieza a convertir tus sueños en realidad"/>
-        <Mostrador elementos={elementos}/>
-        <Footer/>
+      <Fondo textofondo={auth ? "Diseño" : "Login"}/>
+      <div className='bg-cafe mx-4 sm:mx-6 md:mx-8 lg:mx-10 mt-[20vw] sm:mt-[18vw] md:mt-[16vw] lg:mt-[14vw] max-w-full overflow-hidden'>
+        { auth ? 
+        <div>
+          <Header title="AppShow" icon="./icon.svg" items={itemsList} setlogut={handleLogut} User={currentUser} />
+          <h1 className='titulo text-3xl sm:text-4xl md:text-5xl lg:text-6xl'>Design Your</h1>
+          <h1 className='titulo text-3xl sm:text-4xl md:text-5xl lg:text-6xl'>Own Journey</h1>
+          <Ejemplo texto=" Empieza a convertir tus sueños en realidad"/>
+          <Mostrador elementos={elementos}/>
+          <Footer/>
+        </div> 
+      : <Login onLogin={handleLogin}/> }
       </div>
     </>
   )
